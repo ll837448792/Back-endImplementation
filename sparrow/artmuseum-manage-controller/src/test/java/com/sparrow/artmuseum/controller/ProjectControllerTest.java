@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:config/*.xml"})
+@ContextConfiguration({"classpath:config/applicationContext.xml", "classpath:config/spring-*.xml"})
 @WebAppConfiguration
 public class ProjectControllerTest {
 
@@ -42,7 +42,15 @@ public class ProjectControllerTest {
 
         MockHttpServletRequestBuilder request = createRequest("/project/add", "POST");
 
-        String body = "{\"projectName\":\"88\",\"projectDescription\":\"222\",\"tenderPeriod\":\"3344\",\"budget\":\"1000\",\"expectedTime\":\"11212\",\"attachmentList\":\"[name1,name2]\",\"skillList\":\"[java,go,nodejs,vue]\"}";
+        String body = " {\n" +
+                "    \"projectName\": \"666\",\n" +
+                "    \"projectDescription\": \"222\",\n" +
+                "    \"tenderPeriod\": \"212\",\n" +
+                "    \"budget\": \"1000\",\n" +
+                "    \"expectedTime\": \"1212\",\n" +
+                "    \"attachmentList\": \"项目附件\",\n" +
+                "    \"skillList\": \"技能列表\"\n" +
+                "  }";
 
         request.content(body);
         request.accept(MediaType.ALL);
